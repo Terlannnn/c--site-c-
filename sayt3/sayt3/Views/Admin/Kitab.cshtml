@@ -1,0 +1,156 @@
+﻿
+@*@{
+    ViewData["Title"] = "Kitab";
+}*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        td img{
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+
+       
+
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <h2>Kitablar</h2>
+        <table class="table table-hover">
+            <thead>
+                <a href="/Admin/KitabElave"><button type="button" class="btn btn-danger">Insert</button></a>
+
+                <tr>
+                    <th>N</th>
+                    <th>Kitabin Adi</th>
+                    <th>Kitabin yazicisi</th>
+                    <th>Kiitabin janri</th>
+                    <th>Kiitabin qisa melumati</th>
+                    <th>Kitabin qiymeti</th>
+                    <th>Kitabin sekli</th>
+                    
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in ViewBag.Kitab)
+                {
+                    <tr>
+                        <td>@(ViewBag.Kitab.IndexOf(item) + 1)</td>
+                        <td>@item.KitabAd</td>
+                        <td>@item.KitabYazici.YaziciAd</td>
+                        <td>@item.KitabJanr.JanrAd</td>
+                        <td>@item.KitabMelumat</td>
+                        <td>@item.KitabQiymet</td>
+                        <td><img src="~/img/@item.KitabSekil" /></td>
+                        <td>
+                            <button type="button" class="sil1 btn btn-primary" data-toggle="modal" data-target="#exampleModal" kitabId="@item.KitabId">
+        Sil
+    </button></td>
+                        <td><a class="edit" href="/Admin/KitabEdit/@item.KitabId"><button type="button" class="btn btn-success">Edit</button></a></td>
+                        
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Button trigger modal -->
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    DEQIQ???
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="/Admin/KitabSil/"><button type="button"  class="sil2 btn btn-primary">Sil</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.querySelectorAll(".sil1").forEach(x => {
+            x.addEventListener("click", function () {
+
+                var a = this.getAttribute("kitabId")
+
+
+                //document.querySelector("#sil2").action = `/Admin/KitabSil/${id}`
+
+
+
+                document.querySelector(".sil2").parentElement.setAttribute("href", `/Admin/KitabSil/${a}`)
+
+
+
+
+
+
+            })
+        })
+    </script>
+
+</body>
+</html>
+
+

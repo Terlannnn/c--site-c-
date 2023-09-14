@@ -1,0 +1,91 @@
+﻿    
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        img{
+            width:100%;
+            height:100%;
+        }
+
+        .card{
+            height:auto;
+        }
+ 
+    </style>
+    </head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">KITABLAR</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="/Home/Favorite">Favorite</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/Login/Index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+    </div>
+
+
+    <div class="container" >
+        <div class="row">
+            @foreach (var item in ViewBag.Kitab)
+            {
+                <div class="col-lg-4">
+                    <div class="card" >
+                        <img class="card-img-top" src="~/img/@item.KitabSekil" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.KitabAd</h5>
+                            <p class="card-text">@item.KitabMelumat</p>
+                            <a href="/Home/KitabEtrafli/@item.KitabId" class="btn btn-primary">Go somewhere</a>
+                            <i class="fa-solid fa-heart fav" kitabId="@item.KitabId"></i>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+                
+            }
+            
+        </div>
+    </div>
+   <script>
+       $(".fav").on("click", function(){
+           var id = $(this).attr("kitabId");
+           $.ajax({
+               type: "POST",
+               url: "/Home/NewFavorite",
+               data: { id: `${id}` },
+               success: function (result) {
+                   alert("success")
+               },
+                error: function () {
+                   alert("error")
+               }
+           })
+       })
+   </script>
+</body>
+</html>
+
+

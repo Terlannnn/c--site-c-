@@ -1,0 +1,49 @@
+﻿
+@*@{
+    ViewData["Title"] = "KitabElave";
+}
+*@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>KITAB ELAVE</h2>
+
+    <form method="post"  action="/Admin/KitabElave" enctype="multipart/form-data"> 
+        <label for="fname">KitabAd:</label><br>
+        <input type="text" id="fname" name="KitabAd" value=""><br><br>
+        <label for="lname">KitabMelumat:</label><br>
+        <input type="text" id="lname" name="KitabMelumat" value=""><br><br>
+        <label for="lname">KitabQiymet:</label><br>
+        <input type="text" id="lname" name="KitabQiymet" value=""><br><br>
+        
+        <label for="myfile">Sekil secin:</label><br><br>
+        <input type="file" id="myfile" name="KitabSekil">
+        <br><br>
+        
+        <select name="KitabYaziciId">
+            <option selected hidden>Yazicini secin</option>
+            @foreach (var item in ViewBag.yazici)
+            {
+                <option value="@item.YaziciId">@item.YaziciAd</option>
+            }
+        </select>
+
+        <br><br>
+        <select name="KitabJanrId">
+            <option selected hidden>Janri secin</option>
+            @foreach (var item in ViewBag.janr)
+            {
+                <option value="@item.JanrId">@item.JanrAd</option>
+            }
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+</html>
+
+
+

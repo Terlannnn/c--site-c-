@@ -1,0 +1,74 @@
+﻿
+@*@{
+    ViewData["Title"] = "KitabEdit";
+}
+*@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>KITAB EDIT</h2>
+
+    <form method="post" action="/Admin/KitabEdit/@ViewBag.Kitab.KitabId" enctype="multipart/form-data">
+        <label for="fname">KitabAd:</label><br>
+        <input type="text" id="editad" name="KitabAd" value="@ViewBag.Kitab.KitabAd"  ><br><br>
+        <label for="lname">KitabMelumat:</label><br>
+        <input type="text" id="editmelumat" name="KitabMelumat" value="@ViewBag.Kitab.KitabMelumat"><br><br>
+        <label for="lname">KitabQiymet:</label><br>
+        <input type="text" id="editqiymet" name="KitabQiymet" value="@ViewBag.Kitab.KitabQiymet"><br><br>
+
+        <label for="myfile">Sekil secin:</label><br><br>
+        <input type="file" id="editsekil" name="KitabSekil" value="@ViewBag.Kitab.KitabSekil">
+        <br><br>
+
+        <select name="KitabYaziciId" id="edityazici" >
+            
+            @foreach (var item in ViewBag.yazici)
+            {
+                <option value="@item.YaziciId" @(
+                    (@item.YaziciId == @ViewBag.Kitab.KitabYaziciId) ? " selected" : "");>@item.YaziciAd</option>
+            }
+        </select>
+
+        <br><br>
+        <select name="KitabJanrId" id="editjanr" >
+            @foreach (var item in ViewBag.janr)
+            {
+                <option value="@item.JanrId" @(
+                    (@item.JanrId == @ViewBag.Kitab.KitabJanrId) ? "selected" : "");>@item.JanrAd</option>
+            }
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        document.querySelectorAll(".edit").forEach(x => {
+            x.addEventListener("click", function () {
+        var g = this.parentElement.children[0].innerHTML;
+        var b = this.parentElement.children[1].innerHTML;
+        var c = this.parentElement.children[2].innerHTML;
+        var d = this.parentElement.children[3].innerHTML;
+        var e = this.parentElement.children[4].innerHTML;
+        var f = this.parentElement.children[5].innerHTML;
+
+                console.log(g,b,c,d,e,f)
+                editad.value = g;
+                editmelumat.value = b;
+                editqiymet.value = c;
+                editsekil.value =d;
+                edityazici.value = e;
+                editjanr.value = f;
+
+                document.querySelector("#btn btn-success").action = `/Admin/KitabEdit/${id}`
+            })
+        })
+
+
+
+
+
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,282 @@
+﻿
+@*@{
+    Layout = null;
+}*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Glass Card</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+     @@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+body {
+  /* solid background */
+  background: rgb(0,212,255);
+  
+  /* gradient background*/
+  background: linear-gradient(45deg, rgba(0,212,255,1) 0%, rgba(11,3,45,1) 100%);    
+  
+  /* photo background */
+  background-image: url(https://images.unsplash.com/photo-1619204715997-1367fe5812f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1889&q=80);
+  background-size: cover;
+  background-position: center;  
+/*  display: flex;*/
+  align-items: center;
+  justify-content: center;    
+  height: 100vh;  
+}
+
+.container {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.25);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);  
+  padding: 38px;  
+  filter: drop-shadow(0 30px 10px rgba(0,0,0,0.125));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  text-align: center;
+  
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  
+}
+
+/*.banner-image {
+  background-image: ;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255, 0.255)
+}*/
+        .banner-image {
+            background-image:;
+            background-position: center;
+            background-size: cover;
+            height: 300px;
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255, 0.255) 
+            font-family: Arial, sans-serif; 
+            font-size: 24px; 
+       
+            object-fit: cover;
+        }
+
+h1{
+  font-family: 'Righteous', sans-serif;
+  color: rgba(255,255,255,0.98);
+  text-transform: uppercase;
+  font-size: 2.4rem;
+}
+
+p {
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 150%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.button-wrapper{
+  margin-top: 18px;
+}
+
+.btn {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-size: 0.8rem;  
+  letter-spacing: 2px;  
+  cursor: pointer;
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
+
+.outline {
+  background: transparent;
+  color: rgba(0, 212, 255, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.6);
+  transition: all .3s ease;
+  
+}
+
+.outline:hover{
+  transform: scale(1.125);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  transition: all .3s ease;  
+}
+
+.fill {
+  background: rgba(0, 212, 255, 0.9);
+  color: rgba(255,255,255,0.95);
+  filter: drop-shadow(0);
+  font-weight: bold;
+  transition: all .3s ease; 
+}
+
+.fill:hover{
+  transform: scale(1.125);  
+  border-color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
+  transition: all .3s ease;    
+}
+
+
+
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .card {
+            
+            width: 24rem;
+            height: 36rem;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            color: #f0f0f0;
+            box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+        }
+
+            .card img {
+                position: absolute;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0.9;
+                transition: opacity 0.2s ease-out;
+            }
+
+            .card h2 {
+                position: absolute;
+                inset: auto auto 30px 30px;
+                margin: 0;
+                transition: inset 0.3s 0.3s ease-out;
+                font-family: "Roboto Condensed", sans-serif;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+
+            .card p, .card a {
+                position: absolute;
+                opacity: 0;
+                max-width: 80%;
+                transition: opacity 0.3s ease-out;
+            }
+
+            .card p {
+                inset: auto auto 80px 30px;
+            }
+
+            .card a {
+                inset: auto auto 40px 30px;
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .card:hover h2 {
+                inset: auto auto 220px 30px;
+                transition: inset 0.3s ease-out;
+            }
+
+            .card:hover p, .card:hover a {
+                opacity: 1;
+                transition: opacity 0.5s 0.1s ease-in;
+            }
+
+            .card:hover img {
+                transition: opacity 0.3s ease-in;
+                opacity: 1;
+            }
+
+        .material-symbols-outlined {
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+ 
+    <!-- partial -->
+    <div class="container">
+            <div class="banner-image"><img src="~/img/@ViewBag.Kitab.KitabSekil" /> </div>
+            <h1> @ViewBag.Kitab.KitabAd</h1>
+            <p>
+                @ViewBag.Kitab.KitabMelumat
+            </p>
+            <p>@ViewBag.Kitab.KitabQiymet</p>
+            <p>@ViewBag.Kitab.KitabYazici.YaziciAd</p>
+            <p>@ViewBag.Kitab.KitabJanr.JanrAd</p>
+        </div>
+        <div>
+            <a href="/Home/Index"><button class="btn fill">EXIT</button></a>
+
+        </div>
+    </div>
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    @foreach(var o in ViewBag.Other)
+    {
+        <main>
+            <div class="card">
+                <img src="~/img/@o.KitabSekil" />
+                <div class="card-content">
+                    <h2>
+                        @o.KitabAd
+                    </h2>
+
+                    <p>@o.KitabJanr.JanrAd</p>
+
+                    <a href="#" class="button">
+                        Find out more
+                        <span class="material-symbols-outlined">
+                            arrow_right_alt
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    }
+   
+
+
+
+
+</body>
+</html>
